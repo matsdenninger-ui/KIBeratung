@@ -5,11 +5,43 @@ Live-Demo mit Claude versorgt.
 
 | Datei | Zweck |
 |---|---|
-| `index.html` | Die komplette Landingpage inkl. Demo-Widget |
+| `index.html` | Die Landingpage inkl. Demo-Widget |
+| `automation.html` | Zweite Design-Variante, aufgebaut wie eine Automation |
 | `src/index.js` | Cloudflare Worker, der den Anthropic-Key hält |
 | `wrangler.toml` | Worker-Konfiguration |
 
 Das dunkle Farbschema ist der Stand von `main` und bleibt unverändert.
+
+## Zwei Varianten zum Vergleich
+
+Beide Dateien enthalten denselben Text, dieselbe Demo und dasselbe Formular.
+Sie unterscheiden sich nur im Aufbau. Bei Vercel erreichbar unter `/` und
+`/automation`.
+
+### `index.html` — klassische Landingpage
+
+Abschnitte untereinander, jeder für sich. Das vertraute Muster.
+
+### `automation.html` — die Seite als Ablauf
+
+Die Seite ist selbst als Automation gebaut und führt vor, was verkauft wird:
+
+- **Eine durchgehende Schiene** von oben nach unten verbindet alle Stationen.
+  Der Hero ist der **Auslöser** (▶), danach folgen nummerierte Schritte bis zur
+  Übergabe.
+- **Punktraster im Hintergrund** — das visuelle Erkennungszeichen jedes
+  Automations-Editors.
+- **Die vier Leistungen sind Knoten** mit Kopfzeile, Statuspunkt und
+  Laufzeit-Angabe in Monospace (`TAG 1–2`), verbunden durch Konnektoren, auf
+  denen ein Punkt entlangwandert. Der letzte Knoten hat einen grünen Punkt:
+  fertig.
+- **Der Ist-Zustand ist der Eingang** — die vier Probleme mit Datentypen
+  ausgezeichnet (`E-MAIL`, `DOKUMENT`, `STATUS`, `ZEIT`).
+- **Die Demo ist die Live-Ausführung** mit Statusanzeige, die von `BEREIT` über
+  `LÄUFT` auf `FERTIG` springt.
+
+Die Bewegung auf den Konnektoren und der pulsierende Auslöser-Punkt stehen
+still, wenn das Betriebssystem reduzierte Bewegung verlangt.
 
 ## Was an dieser Fassung anders ist
 
