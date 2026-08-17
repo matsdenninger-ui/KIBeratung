@@ -6,6 +6,17 @@
 <title>Mats Denninger — KI-Automatisierung für Vertrieb &amp; Verwaltung</title>
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="Ich finde die Zeitfresser in Ihren Prozessen und automatisiere sie mit KI. 14 Tage, Festpreis, ein Prozess läuft am Ende bereits.">
+
+<!-- Vorschau beim Teilen (LinkedIn, WhatsApp, Slack).
+     og:image fehlt bewusst — dafür braucht es ein echtes Bild, siehe README. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Mats Denninger">
+<meta property="og:title" content="Ihr Team tippt ab, was längst von selbst laufen könnte.">
+<meta property="og:description" content="Zeitgewinn-Check: 14 Tage, 2.900 € Festpreis. Am Ende läuft ein Prozess bereits automatisch — oder Sie zahlen nichts.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ihr Team tippt ab, was längst von selbst laufen könnte.">
+<meta name="twitter:description" content="Zeitgewinn-Check: 14 Tage, 2.900 € Festpreis. Am Ende läuft ein Prozess bereits automatisch — oder Sie zahlen nichts.">
 <style>
   :root {
     color-scheme: light;
@@ -21,7 +32,8 @@
     --wine: #6e2230;           /* dunkles Rot */
     --wine-deep: #4e1621;      /* noch dunkler, Verläufe */
     --border: rgba(22,22,26,0.12);
-    --radius: 18px;
+    --radius: 4px;
+    --radius-sm: 3px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -50,7 +62,7 @@
   .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color .2s; }
   .nav-links a:hover { color: var(--text); }
   .nav-cta {
-    background: var(--gold); color: #16161a; padding: 7px 16px; border-radius: 980px;
+    background: var(--gold); color: #16161a; padding: 7px 16px; border-radius: var(--radius-sm);
     font-size: 13px; font-weight: 500; text-decoration: none; transition: background .2s;
   }
   .nav-cta:hover { background: var(--gold-deep); }
@@ -87,10 +99,25 @@
     color: var(--text-muted); max-width: 660px;
   }
   .hero-cta { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-  .hero-reassure { margin-top: 20px; font-size: 13.5px; color: var(--text-muted); opacity: .85; }
+  .hero-facts {
+    list-style: none; margin-top: 30px; display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 10px 28px; font-size: 14.5px; color: var(--text-muted);
+  }
+  .hero-facts li { display: flex; align-items: baseline; gap: 7px; }
+  .hero-facts li + li { position: relative; }
+  .hero-facts li + li::before {
+    content: ""; position: absolute; left: -15px; top: 4px; bottom: 4px;
+    width: 1px; background: var(--border);
+  }
+  .hero-facts strong { color: var(--text); font-weight: 600; }
+  @media (max-width: 620px) {
+    .hero-facts { flex-direction: column; align-items: center; gap: 8px; }
+    .hero-facts li + li::before { display: none; }
+  }
+  .hero-reassure { margin-top: 22px; font-size: 13.5px; color: var(--text-muted); opacity: .85; }
 
   .btn {
-    display: inline-block; padding: 14px 30px; border-radius: 980px;
+    display: inline-block; padding: 14px 30px; border-radius: var(--radius);
     font-size: 16px; font-weight: 500; text-decoration: none;
     transition: all .25s ease; cursor: pointer; border: none; font-family: inherit;
   }
@@ -117,7 +144,7 @@
   .pain-list {
     list-style: none; margin-top: 40px; display: grid; gap: 0;
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
+    border-radius: var(--radius); overflow: hidden;
   }
   .pain-list li {
     display: flex; gap: 16px; align-items: flex-start;
@@ -150,7 +177,7 @@
   .deliverables { list-style: none; display: grid; gap: 22px; }
   .deliverables li { display: flex; gap: 18px; align-items: flex-start; }
   .deliv-num {
-    flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px;
+    flex-shrink: 0; width: 30px; height: 30px; border-radius: var(--radius-sm);
     background: rgba(200,149,42,0.18); color: var(--gold-ink);
     display: flex; align-items: center; justify-content: center;
     font-size: 14px; font-weight: 700; margin-top: 2px;
@@ -166,7 +193,7 @@
   .price-note { font-size: 13.5px; color: var(--text-muted); margin-top: 8px; }
 
   .guarantee {
-    margin-top: 30px; padding: 22px 24px; border-radius: 14px;
+    margin-top: 30px; padding: 22px 24px; border-radius: var(--radius);
     background: rgba(200,149,42,0.10); border: 1px solid rgba(200,149,42,0.38);
   }
   .guarantee strong { color: var(--gold-ink); }
@@ -184,7 +211,7 @@
   /* ---------- Ablauf ---------- */
   #ablauf { background: linear-gradient(180deg, var(--bg), var(--bg-tint) 55%, var(--bg)); }
   .timeline { margin-top: 46px; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
-  .step { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px; position: relative; }
+  .step { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 24px; position: relative; }
   .step-day { font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 12px; }
   .step h4 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
   .step p { color: var(--text-muted); font-size: 14.5px; }
@@ -204,14 +231,14 @@
   .prompt-label { margin-bottom: 10px; }
   .prompt-label span { font-size: 12.5px; font-weight: 600; color: var(--gold-ink); letter-spacing: 0.08em; text-transform: uppercase; }
   .prompt-box {
-    background: var(--bg-subtle); border: 1px solid rgba(200,149,42,0.35); border-radius: 12px; padding: 20px;
+    background: var(--bg-subtle); border: 1px solid rgba(200,149,42,0.35); border-radius: var(--radius); padding: 20px;
     font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 13px; line-height: 1.65; color: #3c3c44; white-space: pre-wrap;
     max-height: 210px; overflow-y: auto;
   }
   .scenario-wrap { margin-top: 26px; }
   .scenario-wrap textarea {
-    width: 100%; padding: 16px 18px; border-radius: 12px; background: var(--bg-subtle);
+    width: 100%; padding: 16px 18px; border-radius: var(--radius); background: var(--bg-subtle);
     border: 1px solid var(--border); color: var(--text); font-size: 15px;
     font-family: inherit; line-height: 1.6; resize: vertical; min-height: 110px;
     outline: none; transition: border-color .2s;
@@ -228,10 +255,10 @@
     font-size: 12.5px; font-weight: 600; color: var(--wine); letter-spacing: 0.08em;
     text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
   }
-  .badge { font-size: 11px; padding: 2px 10px; border-radius: 100px; background: rgba(110,34,48,0.12); color: var(--wine); font-weight: 500; text-transform: none; letter-spacing: 0; }
+  .badge { font-size: 11px; padding: 2px 10px; border-radius: var(--radius-sm); background: rgba(110,34,48,0.12); color: var(--wine); font-weight: 500; text-transform: none; letter-spacing: 0; }
   .badge.live { background: rgba(22,163,74,0.14); color: #15803d; }
   .response-box {
-    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; padding: 22px;
+    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px;
     font-size: 15px; line-height: 1.7; color: var(--text); min-height: 80px; white-space: pre-wrap;
   }
   .cursor-blink { display: inline-block; width: 8px; height: 18px; background: var(--gold-deep); vertical-align: text-bottom; animation: blink 1s step-end infinite; }
@@ -249,7 +276,7 @@
     position: relative; overflow: hidden;
   }
   .portrait-placeholder {
-    width: 118px; height: 118px; border-radius: 50%;
+    width: 118px; height: 118px; border-radius: var(--radius);
     background: linear-gradient(135deg, var(--wine-deep), var(--wine));
     display: flex; align-items: center; justify-content: center;
     font-size: 40px; font-weight: 700; color: #e8c98a;
@@ -286,7 +313,7 @@
   .contact-detail a { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(200,149,42,0.55); }
   .contact-detail a:hover { color: var(--gold-ink); }
   .booking-box {
-    margin-bottom: 28px; padding: 22px 24px; border-radius: 14px;
+    margin-bottom: 28px; padding: 22px 24px; border-radius: var(--radius);
     background: rgba(200,149,42,0.10); border: 1px solid rgba(200,149,42,0.38);
   }
   .booking-box h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
@@ -295,13 +322,27 @@
   form .field { margin-bottom: 16px; }
   form label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 7px; font-weight: 500; }
   form input, form textarea {
-    width: 100%; padding: 13px 16px; border-radius: 12px; background: var(--bg-subtle);
+    width: 100%; padding: 13px 16px; border-radius: var(--radius); background: var(--bg-subtle);
     border: 1px solid var(--border); color: var(--text); font-size: 15px;
     outline: none; font-family: inherit; transition: border-color .2s;
   }
   form input:focus, form textarea:focus { border-color: var(--gold-deep); }
   form textarea { resize: vertical; min-height: 110px; }
+  .optional { font-weight: 400; color: var(--text-muted); opacity: .75; }
   .form-note { font-size: 12.5px; color: var(--text-muted); margin-top: 12px; }
+  .form-status {
+    margin-top: 16px; padding: 16px 18px; border-radius: var(--radius);
+    background: rgba(200,149,42,0.10); border: 1px solid rgba(200,149,42,0.38);
+    font-size: 14.5px; line-height: 1.55;
+  }
+  .form-status a { color: var(--gold-ink); }
+  .form-status .copy-btn {
+    margin-top: 12px; background: transparent; color: var(--text);
+    border: 1px solid rgba(22,22,26,0.22); border-radius: var(--radius-sm);
+    padding: 8px 14px; font-size: 13.5px; font-family: inherit; cursor: pointer;
+    transition: border-color .2s, color .2s;
+  }
+  .form-status .copy-btn:hover { border-color: var(--gold-deep); color: var(--gold-ink); }
 
   /* ---------- Footer ---------- */
   footer { border-top: 1px solid var(--border); padding: 38px 24px; }
@@ -310,9 +351,25 @@
   footer a:hover { color: var(--gold-ink); }
   .footer-links { display: flex; gap: 24px; }
 
-  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in { opacity: 1; transform: none; }
+  .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* Anker nicht hinter der fixen Navigation parken */
+  header[id], section[id] { scroll-margin-top: 68px; }
+
+  /* Tastaturbedienung sichtbar machen */
+  :focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -339,6 +396,11 @@
     <a class="btn btn-primary" href="#kontakt">Erstgespräch buchen — 30 Min., kostenlos</a>
     <a class="btn btn-secondary" href="#demo">Erst die Demo testen</a>
   </div>
+  <ul class="hero-facts">
+    <li><strong>2.900 €</strong> Festpreis, keine Nachberechnung</li>
+    <li><strong>14 Tage</strong> bis der erste Prozess läuft</li>
+    <li><strong>Keine Ersparnis, keine Rechnung</strong></li>
+  </ul>
   <p class="hero-reassure">Kein Verkaufsgespräch. Sie bekommen im Erstgespräch eine ehrliche Einschätzung — auch wenn sie lautet, dass sich KI für Sie gerade nicht lohnt.</p>
 </header>
 
@@ -571,22 +633,23 @@ Antworte präzise, ohne Füllwörter, auf Deutsch.</div>
       <form id="contactForm" class="reveal">
         <div class="field">
           <label for="cName">Name</label>
-          <input type="text" id="cName" required placeholder="Max Mustermann">
+          <input type="text" id="cName" name="name" autocomplete="name" required placeholder="Max Mustermann">
         </div>
         <div class="field">
-          <label for="cCompany">Unternehmen</label>
-          <input type="text" id="cCompany" placeholder="Mustermann GmbH">
+          <label for="cCompany">Unternehmen <span class="optional">optional</span></label>
+          <input type="text" id="cCompany" name="organization" autocomplete="organization" placeholder="Mustermann GmbH">
         </div>
         <div class="field">
           <label for="cEmail">E-Mail</label>
-          <input type="email" id="cEmail" required placeholder="max@mustermann.de">
+          <input type="email" id="cEmail" name="email" autocomplete="email" required placeholder="max@mustermann.de">
         </div>
         <div class="field">
           <label for="cMsg">Wo geht bei Ihnen Zeit verloren?</label>
-          <textarea id="cMsg" required placeholder="Ein, zwei Sätze genügen."></textarea>
+          <textarea id="cMsg" name="message" required placeholder="Ein, zwei Sätze genügen."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Erstgespräch anfragen</button>
-        <p class="form-note">Beim Absenden öffnet sich Ihr E-Mail-Programm mit der vorausgefüllten Nachricht. Kein Newsletter, keine Weitergabe Ihrer Daten.</p>
+        <p class="form-note">Kein Newsletter, keine Weitergabe Ihrer Daten. Antwort innerhalb von 24 Stunden.</p>
+        <div class="form-status" id="formStatus" role="status" hidden></div>
       </form>
     </div>
   </div>
@@ -629,15 +692,49 @@ if (BOOKING_URL) {
 }
 
 // ---------- Kontaktformular (mailto) ----------
+// Nicht jeder Besucher hat ein Mailprogramm eingerichtet — bei Webmail passiert
+// nach dem Klick oft sichtbar nichts. Deshalb bleibt die Nachricht nach dem
+// Absenden auf der Seite stehen und laesst sich kopieren.
+const MAIL_TO = 'matsdenninger@gmail.com';
+const formStatus = document.getElementById('formStatus');
+
 document.getElementById('contactForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const name = document.getElementById('cName').value;
-  const company = document.getElementById('cCompany').value;
-  const email = document.getElementById('cEmail').value;
-  const msg = document.getElementById('cMsg').value;
-  const subject = encodeURIComponent(`Erstgespräch Zeitgewinn-Check — ${name}${company ? ' (' + company + ')' : ''}`);
-  const body = encodeURIComponent(`Name: ${name}\nUnternehmen: ${company || '—'}\nE-Mail: ${email}\n\nWo Zeit verloren geht:\n${msg}`);
-  window.location.href = `mailto:matsdenninger@gmail.com?subject=${subject}&body=${body}`;
+  const name = document.getElementById('cName').value.trim();
+  const company = document.getElementById('cCompany').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const msg = document.getElementById('cMsg').value.trim();
+
+  const subjectText = `Erstgespräch Zeitgewinn-Check — ${name}${company ? ' (' + company + ')' : ''}`;
+  const bodyText = `Name: ${name}\nUnternehmen: ${company || '—'}\nE-Mail: ${email}\n\nWo Zeit verloren geht:\n${msg}`;
+
+  window.location.href = `mailto:${MAIL_TO}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+
+  formStatus.hidden = false;
+  formStatus.innerHTML = `
+    <strong>Ihr E-Mail-Programm sollte sich jetzt öffnen.</strong>
+    Falls nichts passiert, schreiben Sie mir direkt an
+    <a href="mailto:${MAIL_TO}">${MAIL_TO}</a> — hier ist Ihre Nachricht zum Kopieren.
+    <br><button type="button" class="copy-btn">Nachricht kopieren</button>`;
+
+  const copyBtn = formStatus.querySelector('.copy-btn');
+  copyBtn.addEventListener('click', async () => {
+    const full = `${subjectText}\n\n${bodyText}`;
+    try {
+      await navigator.clipboard.writeText(full);
+      copyBtn.textContent = 'Kopiert';
+    } catch {
+      // Aelterer Browser oder blockierte Zwischenablage: Text markierbar anbieten
+      const ta = document.createElement('textarea');
+      ta.value = full;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'width:100%;margin-top:12px;min-height:150px;';
+      copyBtn.replaceWith(ta);
+      ta.select();
+    }
+  });
+
+  formStatus.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 });
 
 // ---------- Demo ----------
@@ -664,8 +761,11 @@ Geschätzte Ersparnis: rund 1,5 Stunden pro Person und Tag, bei 8 Mitarbeitern e
 4. RISIKO
 Bei Nichtstun gehen weiterhin Leads durch Übertragungsfehler verloren. Bereits zwei verlorene Abschlüsse pro Monat übersteigen die Kosten einer Automatisierung deutlich. Hinzu kommt die Belastung des Teams durch Arbeit, die niemand freiwillig macht.`;
 
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function typeText(text, el, speed = 8) {
   return new Promise((resolve) => {
+    if (reducedMotion) { el.textContent = text; resolve(); return; }
     el.textContent = '';
     const cursor = document.createElement('span');
     cursor.className = 'cursor-blink';

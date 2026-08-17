@@ -22,6 +22,36 @@ Inhalt:
 - Der Worker heißt `claude-demo-proxy-v2`. So überschreibt ein Deploy aus
   diesem Branch nicht den bestehenden `claude-demo-proxy` von `main`.
 
+- **Kantigere Formsprache.** `--radius` von 18px auf 4px, `--radius-sm` 3px.
+  Buttons sind keine Pillen mehr (vorher `980px`). Rund bleiben nur der
+  Status-Punkt und die drei Fensterpunkte der Demo.
+- **Conversion-Arbeit**, im Detail unten.
+
+### Conversion-Optimierung
+
+Behoben:
+
+| Was | Warum es Conversions gekostet hat |
+|---|---|
+| Formular ohne Rückmeldung | Der Absenden-Knopf öffnete nur ein `mailto:`. Wer kein Mailprogramm eingerichtet hat — bei Webmail der Normalfall — sah gar nichts, und die Anfrage war weg. Jetzt bleibt die Nachricht mit Kopier-Knopf stehen. |
+| Anker sprangen hinter die Navigation | Ein Klick auf „Angebot" schob die Überschrift unter die fixe Navigationsleiste. Behoben mit `scroll-margin-top`. |
+| Inhalt unsichtbar ohne JavaScript | `.reveal` setzte `opacity: 0`; ohne JavaScript blieb der halbe Seiteninhalt dauerhaft leer. Die Regel greift jetzt nur noch mit aktivem JavaScript. |
+| Preis erst nach zweimal Scrollen | Faktenzeile unter den Hero-Buttons: Festpreis, Dauer, Garantie. Qualifiziert Besucher sofort. |
+| Kein sichtbarer Tastatur-Fokus | `:focus-visible` ergänzt. |
+| Keine Teilen-Vorschau | Open-Graph- und Twitter-Tags ergänzt, damit Links auf LinkedIn nicht nackt aussehen. |
+| Formularfelder ohne `autocomplete` | Browser konnten Name, Firma und E-Mail nicht vorausfüllen. |
+
+Bewusst **nicht** gemacht, weil es deine Entscheidung oder deine Daten braucht:
+
+- **Echtes Formular-Backend** statt `mailto:` (Formspree, Web3Forms, Vercel
+  Forms). Das ist der größte verbleibende Hebel — `mailto:` verliert Anfragen,
+  egal wie gut der Fallback ist.
+- **Impressum und Datenschutz** verlinken auf `#`. Für eine gewerbliche Seite
+  in Deutschland ist das nicht optional.
+- **`og:image`** braucht ein echtes Bild.
+- **Referenzen und Testimonials** — du hast keine, und erfundene wären das
+  Gegenteil dessen, was die Seite verspricht.
+
 ### Farbwerte
 
 | Variable | Wert | Verwendung |
