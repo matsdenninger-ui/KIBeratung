@@ -22,9 +22,9 @@ Inhalt:
 - Der Worker heißt `claude-demo-proxy-v2`. So überschreibt ein Deploy aus
   diesem Branch nicht den bestehenden `claude-demo-proxy` von `main`.
 
-- **Kantigere Formsprache.** `--radius` von 18px auf 4px, `--radius-sm` 3px.
-  Buttons sind keine Pillen mehr (vorher `980px`). Rund bleiben nur der
-  Status-Punkt und die drei Fensterpunkte der Demo.
+- **Runde Ecken wie gehabt.** `--radius` bleibt bei 18px, Buttons bleiben
+  Pillen (`980px`). Eine kantige Variante war zwischenzeitlich da und wurde
+  wieder zurückgenommen.
 - **Conversion-Arbeit**, im Detail unten.
 
 ### Conversion-Optimierung
