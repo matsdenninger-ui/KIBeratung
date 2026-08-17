@@ -1,3 +1,44 @@
+# KI Berater App 2 — Branch `v5`
+
+Zweite Fassung der KI-Beratungs-Demo. Sie liegt bewusst im Branch `v5`, damit
+`main` unverändert online bleibt. Vercel baut für diesen Branch eine eigene
+Preview-URL; die Live-Seite ist davon nicht betroffen.
+
+Inhalt:
+
+| Datei | Zweck |
+|---|---|
+| `index.html` | Die komplette Landingpage inkl. Demo-Widget |
+| `src/index.js` | Cloudflare Worker, der den Anthropic-Key hält |
+| `wrangler.toml` | Worker-Konfiguration |
+
+## Unterschiede zu `main`
+
+- **Helles Farbschema.** Weißer Grund statt Anthrazit, kräftigeres Gold
+  (`#c8952a`, als Schriftfarbe `#8a6410`) und ein dunkleres Rot (`#6e2230`).
+- Der Worker liegt jetzt unter `src/index.js` — genau dort, wo `wrangler.toml`
+  ihn mit `main = "src/index.js"` erwartet. Auf `main` lag die Datei im
+  Wurzelverzeichnis, `wrangler deploy` lief damit nicht durch.
+- Der Worker heißt `claude-demo-proxy-v2`. So überschreibt ein Deploy aus
+  diesem Branch nicht den bestehenden `claude-demo-proxy` von `main`.
+
+### Farbwerte
+
+| Variable | Wert | Verwendung |
+|---|---|---|
+| `--bg` | `#ffffff` | Grundfläche |
+| `--bg-tint` | `#f6f4f1` | warm abgesetzte Abschnitte |
+| `--gold` | `#c8952a` | Buttons, Flächen |
+| `--gold-deep` | `#a87a16` | Hover, Linien |
+| `--gold-ink` | `#8a6410` | Gold als Schriftfarbe (kontraststark auf Weiß) |
+| `--wine` | `#6e2230` | dunkles Rot: Labels, Linien |
+| `--wine-deep` | `#4e1621` | Verläufe, Portrait |
+
+Gold gibt es in zwei Stärken, weil ein Gold, das auf Weiß als Schrift lesbar
+ist, als Buttonfläche zu dunkel wirkt — und umgekehrt.
+
+---
+
 # Claude-Proxy — Einrichtung
 
 Dieser Cloudflare Worker hält deinen Anthropic-API-Key. Die Website ruft nur
@@ -58,14 +99,14 @@ wrangler deploy
 ```
 
 Am Ende erscheint eine URL wie
-`https://claude-demo-proxy.dein-name.workers.dev`.
+`https://claude-demo-proxy-v2.dein-name.workers.dev`.
 
 ### 6. URL in die Website eintragen
 
 In `index.html` ganz oben im `<script>`-Block:
 
 ```js
-const WORKER_URL = "https://claude-demo-proxy.dein-name.workers.dev";
+const WORKER_URL = "https://claude-demo-proxy-v2.dein-name.workers.dev";
 ```
 
 Solange dort ein leerer String steht, zeigt die Demo automatisch die
